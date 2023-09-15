@@ -3,14 +3,10 @@
 # pero tengo 0 intencion de repetir un FuzzBazz basico en python
 
 ## MECH ARMORY 
-
-# GLADIUS-Class Shield 
-
 print(10*"*-*")
 print("Mecha Armory -- Deploy Status.")
 
 ## mecha base status: 
-## Esto puede ser un dict, no?
 mechStatus= {
     "Armor" : 2,
     "chassis" : 10,
@@ -19,10 +15,6 @@ mechStatus= {
     "freeHand" : "",
     "shieldDeployed" : False,
 }
-
-
-print ("CURRENT ARMOR: ", mechStatus["Armor"])
-print ("Shield Deployed", mechStatus["shieldDeployed"])
 
 settingArmory = True
 
@@ -48,8 +40,8 @@ while settingArmory:
     seeArmory=input("Want to check your armory? y/n")
     if(seeArmory.lower()=="y"):
         ## Check Armory
-        ## Mejoras pposibles: funcion. Matriz multinivel, base de datos. indicador
-        print("Present weapons:)")
+        ## Mejoras pposibles: funcion.  base de datos. indicador
+        print("Selecting main Weapon:")
         weapons=(
             {
                 "name" : "lazerSword",
