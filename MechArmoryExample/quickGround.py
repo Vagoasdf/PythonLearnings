@@ -10,63 +10,85 @@ print(10*"*-*")
 print("Mecha Armory -- Deploy Status.")
 
 ## mecha base status: 
-Armor = 2
-chassis = 10
-movement = 5
-selectedWeapon = ""
-freeHand = ""
-shieldDeployed = False
-
-print ("CURRENT ARMOR: ", Armor)
-print ("Shield Deployed", shieldDeployed)
-
-if not shieldDeployed:
-    equipShield = input("Want to equip shield? y/n")
-    if(equipShield.lower()=="y"):
-        shieldDeployed = True
-        Armor +=2
-        freeHand = "Shield"
+## Esto puede ser un dict, no?
+mechStatus= {
+    "Armor" : 2,
+    "chassis" : 10,
+    "movement" : 5,
+    "selectedWeapon" : "",
+    "freeHand" : "",
+    "shieldDeployed" : False,
+}
 
 
-if shieldDeployed:
-    unequipShield = input("Want to unequip shield? y/n")
-    if(unequipShield.lower()=="y"):
-        shieldDeployed = False
-        Armor -=2
-        freehand = ""
+print ("CURRENT ARMOR: ", mechStatus["Armor"])
+print ("Shield Deployed", mechStatus["shieldDeployed"])
 
+settingArmory = True
 
-print ("CURRENT ARMOR: ", Armor)
+while settingArmory:
+    print ("CURRENT ARMOR: ", mechStatus["Armor"])
 
-seeArmory=input("Want to check your armory? y/n")
-if(seeArmory.lower()=="y"):
-    ## Check Armory
-    ## Mejoras pposibles: funcion. Matriz multinivel, base de datos. indicador
-    print("Present weapons:)")
-    weapons=("lazerSword","cannonLazer","baseMachinegun","ArtilleryAhoy")
+    if not mechStatus["shieldDeployed"]:
+        equipShield = input("Want to equip shield? y/n")
+        if(equipShield.lower()=="y"):
+            mechStatus["shieldDeployed"] = True
+            mechStatus["Armor"] +=2
+            mechStatus["freeHand"] = "Shield"
 
-    for weapon in weapons :
-        print(weapon)
-        if(weapon == "lazerSword"):
-            print(" A Powerful Sword. Can cut size 1 Mechas in half on a crit. Meele range")
-        if(weapon == "cannonLazer"):
-            print("One beam into destruction. Can wreck havock in a line. Medium range")
-        if(weapon == "baseMachinegun"):
-            print("A machine gun strapped into an arm. Reliable an fast. Medium Range")
-        if(weapon == "ArtilleryAhoy"):
-            print("The old kinetick artillery never grows old. Long range. Slow")
-        selectWeapon=input("Want to select the weapon ? y/n")
-        if(selectWeapon.lower()=="y"):
-            selectedWeapon = weapon
-            break;
-    
-    print("Selected Weapon: ", selectedWeapon)
-else:
-    print("Ok shield guy, good luck.")
+    elif mechStatus["shieldDeployed"]:
+        unequipShield = input("Want to unequip shield? y/n")
+        if(unequipShield.lower()=="y"):
+            mechStatus["shieldDeployed"] = False
+            mechStatus["Armor"] -=2
+            mechStatus["freeHand"] = "None"
 
+    print("Weapon deployed: ",mechStatus["selectedWeapon"])
+    print("Free hand:", mechStatus["freeHand"])
+    seeArmory=input("Want to check your armory? y/n")
+    if(seeArmory.lower()=="y"):
+        ## Check Armory
+        ## Mejoras pposibles: funcion. Matriz multinivel, base de datos. indicador
+        print("Present weapons:)")
+        weapons=("lazerSword","cannonLazer","baseMachinegun","ArtilleryAhoy")
 
+        for weapon in weapons :
+            print(weapon)
+            if(weapon == "lazerSword"):
+                print(" A Powerful Sword. Can cut size 1 Mechas in half on a crit. Meele range")
+            if(weapon == "cannonLazer"):
+                print("One beam into destruction. Can wreck havock in a line. Medium range")
+            if(weapon == "baseMachinegun"):
+                print("A machine gun strapped into an arm. Reliable an fast. Medium Range")
+            if(weapon == "ArtilleryAhoy"):
+                print("The old kinetick artillery never grows old. Long range. Slow")
+            selectWeapon=input("Want to select the weapon ? y/n")
+            if(selectWeapon.lower()=="y"):
+                mechStatus["selectedWeapon"] = weapon
+                break;
+        print("Selected Weapon: ", mechStatus["selectedWeapon"])
 
-ready = input("Ready for Deploy? y/n")
-if(ready.lower()=="y"):
-    print("Good Speed")
-    exit
+        if (mechStatus["freeHand"] != "Shield") :
+            print("Select Weapon for Freehand. Current: ", mechStatus["freeHand"])
+            for weapon in weapons :
+                print(weapon)
+                if(weapon == "lazerSword"):
+                    print(" A Powerful Sword. Can cut size 1 Mechas in half on a crit. Meele range")
+                if(weapon == "cannonLazer"):
+                    print("One beam into destruction. Can wreck havock in a line. Medium range")
+                if(weapon == "baseMachinegun"):
+                    print("A machine gun strapped into an arm. Reliable an fast. Medium Range")
+                if(weapon == "ArtilleryAhoy"):
+                    print("The old kinetick artillery never grows old. Long range. Slow")
+                selectWeapon=input("Want to select the weapon ? y/n")
+                if(selectWeapon.lower()=="y"):
+                    mechStatus["freeHand"] = weapon
+                    break;
+        print("OffHand Weapon: ", mechStatus["freeHand"])
+        
+    ready = input("Ready for Deploy? y/n")
+    if(ready.lower()=="y"):
+        print("Good Speed")
+        settingArmory = False
+
+print("----- ARMORY SET UP. GOOD SPEED CAVALIER -------")

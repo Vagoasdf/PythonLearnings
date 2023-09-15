@@ -307,6 +307,59 @@ listadeTupla = list(tuplaRepetida)
 tuplaDeLista = tuple(listaRepetida)
 
 ## Diccionarios
+## Key Value Pairs
+
+aDict = {}
+aDict = {
+    "key": "value"
+}
+
+rangoArmas = {
+    "lanza" : 2,
+    "espada" : 1,
+    "arco" : 10
+}
+
+print(rangoArmas)
+
+print(rangoArmas["lanza"])
+print(rangoArmas.get("lanza"))
+
+##get en un nulo da none en vez de error
+print(rangoArmas.get("daga"))
+print("daga" in rangoArmas)
+print("lanza" in rangoArmas)
+
+print(len(rangoArmas))
+
+## Actualizar las claves
+rangoArmas["espada"] = 2
+print(rangoArmas)
 
 
+##Podemos sacar las claves
+keyArmas = rangoArmas.keys()
+print(keyArmas)
+print(type(keyArmas))
+
+## Podemos tomar los items 
+itemArmas = rangoArmas.items()
+print(itemArmas)
+print(type(itemArmas))
+
+
+## Y tomar directo las values
+valueArmas = rangoArmas.values()
+print(valueArmas)
+print(type(valueArmas))
+
+## cliclos 
+
+adentro = True
+loop = 0
+while (adentro):
+    print ("Tamos adentro!")
+    loop += 1
+    if loop > 10:
+        adentro = False
 
