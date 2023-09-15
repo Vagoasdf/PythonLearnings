@@ -50,40 +50,45 @@ while settingArmory:
         ## Check Armory
         ## Mejoras pposibles: funcion. Matriz multinivel, base de datos. indicador
         print("Present weapons:)")
-        weapons=("lazerSword","cannonLazer","baseMachinegun","ArtilleryAhoy")
+        weapons=(
+            {
+                "name" : "lazerSword",
+                "desc" : " A Powerful Sword. Can cut size 1 Mechas in half on a crit. Meele range"
+            },
+            {
+                "name" : "cannonLazer",
+                "desc" : "One beam into destruction. Can wreck havock in a line. Medium range" 
+            },
+            {
+                "name" : "baseMachinegun",
+                "desc" : "A machine gun strapped into an arm. Reliable an fast. Medium Range" 
+            },
+            {
+                "name" : "ArtilleryAhoy",
+                "desc" : "The old kinetick artillery never grows old. Long range. Slow" 
+            },
+        )
 
         for weapon in weapons :
-            print(weapon)
-            if(weapon == "lazerSword"):
-                print(" A Powerful Sword. Can cut size 1 Mechas in half on a crit. Meele range")
-            if(weapon == "cannonLazer"):
-                print("One beam into destruction. Can wreck havock in a line. Medium range")
-            if(weapon == "baseMachinegun"):
-                print("A machine gun strapped into an arm. Reliable an fast. Medium Range")
-            if(weapon == "ArtilleryAhoy"):
-                print("The old kinetick artillery never grows old. Long range. Slow")
+            print(weapon["name"])
+            print(weapon["desc"])
             selectWeapon=input("Want to select the weapon ? y/n")
             if(selectWeapon.lower()=="y"):
                 mechStatus["selectedWeapon"] = weapon
                 break;
+        
         print("Selected Weapon: ", mechStatus["selectedWeapon"])
 
         if (mechStatus["freeHand"] != "Shield") :
             print("Select Weapon for Freehand. Current: ", mechStatus["freeHand"])
             for weapon in weapons :
-                print(weapon)
-                if(weapon == "lazerSword"):
-                    print(" A Powerful Sword. Can cut size 1 Mechas in half on a crit. Meele range")
-                if(weapon == "cannonLazer"):
-                    print("One beam into destruction. Can wreck havock in a line. Medium range")
-                if(weapon == "baseMachinegun"):
-                    print("A machine gun strapped into an arm. Reliable an fast. Medium Range")
-                if(weapon == "ArtilleryAhoy"):
-                    print("The old kinetick artillery never grows old. Long range. Slow")
+                print(weapon["name"])
+                print(weapon["desc"])
                 selectWeapon=input("Want to select the weapon ? y/n")
                 if(selectWeapon.lower()=="y"):
                     mechStatus["freeHand"] = weapon
                     break;
+        
         print("OffHand Weapon: ", mechStatus["freeHand"])
         
     ready = input("Ready for Deploy? y/n")
