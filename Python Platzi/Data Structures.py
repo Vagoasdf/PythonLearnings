@@ -95,11 +95,17 @@ print (vowels)
 def reverse(s):
     return s[::-1]
 
-
 reverseLambda = lambda s: s[::-1]
-
 
 print (reverse("A STRING! "))
 
 print(reverseLambda("A LAMBDA STRING!"))
 
+## Funciones con multiples cosas 
+
+def find2DPropeties(width, length):
+    return width*length, width*2+length*2
+
+area, perimetro = find2DPropeties(10,20)
+
+print(area,perimetro )
