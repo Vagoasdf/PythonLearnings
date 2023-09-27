@@ -12,10 +12,11 @@ class Mecha:
         self.selectedWeapon = None
         self.freeHand = None
     
+   
 
 
-    def deployShield(self):
-        if not self.shieldDeployed and confirm("Want to equip shield? y/n"):
+    def deployShield(selielf):
+        if not self.shdDeployed and confirm("Want to equip shield? y/n"):
                 self.shieldDeployed = True
                 self.armour +=2
                 self.freeHand = "Shield"
@@ -27,24 +28,7 @@ class Mecha:
 
     def checkArmoury(self):  
         print("Selecting main Weapon:")
-        weapons=(
-            {
-                "name" : "lazerSword",
-                "desc" : " A Powerful Sword. Can cut size 1 Mechas in half on a crit. Meele range"
-            },
-            {
-                "name" : "cannonLazer",
-                "desc" : "One beam into destruction. Can wreck havock in a line. Medium range" 
-            },
-            {
-                "name" : "baseMachinegun",
-                "desc" : "A machine gun strapped into an arm. Reliable an fast. Medium Range" 
-            },
-            {
-                "name" : "ArtilleryAhoy",
-                "desc" : "The old kinetick artillery never grows old. Long range. Slow" 
-            },
-        )
+
 
         for weapon in weapons :
             print(weapon["name"], weapon["desc"])
